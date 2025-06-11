@@ -39,3 +39,13 @@ function imprimirTareaPorTitulo(titulo)
     end
     print("Tarea no encontrada.")
 end
+
+imprimirTareaPorTitulo("Estudiar programacion")
+
+function imprimirTareas()
+    for i, tarea in ipairs(ListaDeTarea) do
+        print(i.." "..tarea.titulo.." - "..tarea.descripcion.." ["..tarea.estado.."]")
+    end
+end
+
+imprimirTareas()
