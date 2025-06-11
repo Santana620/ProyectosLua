@@ -12,6 +12,12 @@ local ListaDeTarea = { --Guardaremos todas las listas
     }
 }
 function agregarTarea(titulo, descripcion)
+    for i, tarea in ipairs(ListaDeTarea) do
+            if tarea.titulo == titulo then
+                print("Esta tarea ya existe")
+                return
+            end
+        end
     local tarea = {
         titulo = titulo,
         descripcion = descripcion,
@@ -49,3 +55,5 @@ function imprimirTareas()
 end
 
 imprimirTareas()
+agregarTarea("Hacer flexiones", "Tienes que hacer 40 fleciones")
+agregarTarea("Hacer flexiones", "Tienes que hacer 40 fleciones")
