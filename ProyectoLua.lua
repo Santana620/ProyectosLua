@@ -57,3 +57,10 @@ end
 imprimirTareas()
 agregarTarea("Hacer flexiones", "Tienes que hacer 40 fleciones")
 agregarTarea("Hacer flexiones", "Tienes que hacer 40 fleciones")
+
+local ListaDeTareasCompletadas = {
+         titulo = ,
+         descripcion = ,
+         estado = "Completada"
+
+}
