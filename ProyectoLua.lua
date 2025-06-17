@@ -94,8 +94,7 @@ function eliminarTarea(titulo)
 end
     print("Titulo encontrado")
     end
- end
-end 
+
 function imprimirTareaPorTitulo(titulo)
     for i, tarea in ipairs(ListaDeTarea) do
         if tarea.titulo == titulo then
