@@ -84,3 +84,17 @@ function MostarTareasCompletadas()
     print("COMPLETADA:" ..tarea.titulo)
     end
 end
+function DeshacerTareaCompletada(titulo)
+    local tarea_deshecha = false
+    for i, tarea_completada in ipairs(ListaDeTareasCompletadas) do
+        if tarea_completada.titulo == titulo then
+            table.remove(ListaDeTareasCompletadas, i)
+            print("Tarea " ..tarea_completada.titulo .. " deshecha")
+            tarea_deshecha = true
+            break
+        end
+    end
+    if not tarea_deshecha then
+        print("Esta tarea no estaba completada")
+    end
+end
