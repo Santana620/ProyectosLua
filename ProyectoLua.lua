@@ -32,6 +32,11 @@ end
 function eliminarTarea(titulo)
  for i, tarea in ipairs(ListaDeTarea) do
     if tarea.titulo == titulo then
+        table.remove(ListaDeTarea, i)
+        print("Tarea eliminada: " .. titulo)
+        return
+    end
+end
     print("Titulo encontrado")
     end
  end
@@ -46,17 +51,11 @@ function imprimirTareaPorTitulo(titulo)
     print("Tarea no encontrada.")
 end
 
-imprimirTareaPorTitulo("Estudiar programacion")
-
 function imprimirTareas()
     for i, tarea in ipairs(ListaDeTarea) do
         print(i.." "..tarea.titulo.." - "..tarea.descripcion.." ["..tarea.estado.."]")
     end
 end
-
-imprimirTareas()
-agregarTarea("Hacer flexiones", "Tienes que hacer 40 fleciones")
-agregarTarea("Hacer flexiones", "Tienes que hacer 40 fleciones")
 
 local ListaDeTareasCompletadas = {}
 
@@ -79,11 +78,9 @@ end
             print("Esta tarea no existe")
             end
         end
-CompletarTareas("Lavar el coche")
-CompletarTareas("pasear al perro")
+
 function MostarTareasCompletadas()
     for i, tarea in ipairs(ListaDeTareasCompletadas) do
     print("COMPLETADA:" ..tarea.titulo)
     end
 end
-MostarTareasCompletadas()
