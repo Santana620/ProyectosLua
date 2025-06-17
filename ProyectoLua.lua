@@ -32,9 +32,11 @@ end
 function eliminarTarea(titulo)
  for i, tarea in ipairs(ListaDeTarea) do
     if tarea.titulo == titulo then
-    print("Titulo encontrado")
+            table.remove(ListaDeTarea, i)
+            print("Tarea eliminada: " .. titulo)
+            return
+        end
     end
- end
 end 
 function imprimirTareaPorTitulo(titulo)
     for i, tarea in ipairs(ListaDeTarea) do
@@ -87,3 +89,20 @@ function MostarTareasCompletadas()
     end
 end
 MostarTareasCompletadas()
+function DeshacerTareaCompletada(titulo)
+    local tarea_deshecha = false
+    for i, tarea_completada in ipairs(ListaDeTareasCompletadas) do
+        if tarea_completada.titulo == titulo then
+            table.remove(ListaDeTareasCompletadas, i)
+            print("Tarea " ..tarea_completada.titulo .. " deshecha")
+            tarea_deshecha = true
+            break
+        end
+    end
+    if not tarea_deshecha then
+        print("Esta tarea no estaba completada")
+    end
+end
+DeshacerTareaCompletada("pasear al perro")
+
+            
