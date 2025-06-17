@@ -50,6 +50,22 @@ end
 
 
 ----------------------------------------------------------------------------
+-- FUNCIÓN PARA PERMITIR LA INTERACCIÓN ------------------------------------
+function guardarEnJSON(nombre_archivo)
+    local archivo = io.open(nombre_archivo, "w")
+    if archivo then
+        local contenido = json.encode(ListaDeTarea, { indent = true })
+        archivo:write(contenido)
+        archivo:close()
+        print("Tareas guardadas en " .. nombre_archivo)
+    else
+        print("No se pudo abrir el archivo.")
+    end
+end
+-----------------------------------------------------------------------------
+
+
+
 function agregarTarea(titulo, descripcion)
     for i, tarea in ipairs(ListaDeTarea) do
             if tarea.titulo == titulo then
