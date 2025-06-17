@@ -58,9 +58,32 @@ imprimirTareas()
 agregarTarea("Hacer flexiones", "Tienes que hacer 40 fleciones")
 agregarTarea("Hacer flexiones", "Tienes que hacer 40 fleciones")
 
-local ListaDeTareasCompletadas = {
-         titulo = ,
-         descripcion = ,
-         estado = "Completada"
+local ListaDeTareasCompletadas = {}
 
-}
+function CompletarTareas(titulo)
+    local tarea_encontrada = false 
+    for i, tarea in ipairs(ListaDeTarea) do
+        if tarea.titulo == titulo then
+        local tarea_completada = { 
+        titulo = tarea.titulo,
+        descripcion = tarea.descripcion,
+        estado = "Completado",
+        }
+        table.insert(ListaDeTareasCompletadas, tarea_completada)
+        print("Hay una tarea completada, revisala")
+        tarea_encontrada = true 
+        break
+    end
+end
+        if not tarea_encontrada then
+            print("Esta tarea no existe")
+            end
+        end
+CompletarTareas("Lavar el coche")
+CompletarTareas("pasear al perro")
+function MostarTareasCompletadas()
+    for i, tarea in ipairs(ListaDeTareasCompletadas) do
+    print("COMPLETADA:" ..tarea.titulo)
+    end
+end
+MostarTareasCompletadas()
