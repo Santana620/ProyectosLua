@@ -12,6 +12,7 @@ local ListaDeTarea = { --Guardaremos todas las listas
         estado = "pendiente"
     }
 }
+local ListaDeTareasCompletadas = {}
 
 
 
@@ -94,8 +95,6 @@ function imprimirTareas()
         print(i.." "..tarea.titulo.." - "..tarea.descripcion.." ["..tarea.estado.."]")
     end
 end
-
-local ListaDeTareasCompletadas = {}
 
 function CompletarTareas(titulo)
     local tarea_encontrada = false 
