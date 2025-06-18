@@ -117,9 +117,9 @@ end
             end
         end
 
-function MostarTareasCompletadas()
+function MostrarTareasCompletadas()
     for i, tarea in ipairs(ListaDeTareasCompletadas) do
-    print("COMPLETADA:" ..tarea.titulo)
+        print("COMPLETADA: " .. tarea.titulo)
     end
 end
 function DeshacerTareaCompletada(titulo)
@@ -147,6 +147,7 @@ while true do
     print("4. Guardar en JSON")
     print("5. Salir")
     print("6. Mostrar tareas completadas")
+    print("7. Deshacer tarea completada")
 
     io.write("Selecciona una opción: ")
     local opcion = io.read()
@@ -170,10 +171,14 @@ while true do
         guardarEnJSON("tareas.json")
         break
     elseif opcion == "6" then
-        MostarTareasCompletadas()
+        MostrarTareasCompletadas()
         guardarEnJSON("tareas.json")
     else
         print("Opción no válida")
+    elseif opcion == "7" then
+    io.write("Título de la tarea a deshacer: ")
+    local titulo = io.read()
+    DeshacerTareaCompletada(titulo)
     end
 end
 
