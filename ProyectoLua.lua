@@ -32,7 +32,7 @@ function cargarDesdeJSON(nombre_archivo)
     local archivo = io.open(nombre_archivo, "r")
     if archivo then
         local contenido = archivo:read("*a")
-        archivo.close()
+        archivo:close()
         local datos, pos, err = json.decode(contenido)
         if datos then
             ListaDeTarea = datos
@@ -97,7 +97,7 @@ function CompletarTareas(titulo)
     local tarea_encontrada = false 
     for i, tarea in ipairs(ListaDeTarea) do
         if tarea.titulo == titulo and tarea.estado ~= "Completado"  then
-        local tarea_estado = "Completado" 
+        tarea_estado = "Completado" 
         table.insert(ListaDeTareasCompletadas, {
                 titulo = tarea.titulo,
                 descripcion = tarea.descripcion,
@@ -142,6 +142,7 @@ while true do
     print("3. Mostrar tareas")
     print("4. Guardar en JSON")
     print("5. Salir")
+    print("6. Mostrar tareas completadas")
 
     io.write("Selecciona una opción: ")
     local opcion = io.read()
@@ -162,6 +163,9 @@ while true do
         guardarEnJSON("tareas.json")
     elseif opcion == "5" then
         print("Saliendo...")
+    elseif opcion == "6" then
+        MostarTareasCompletadas()
+        guardarEnJSON("tareas.json")
         break
     else
         print("Opción no válida")
@@ -172,7 +176,7 @@ local status, resultado = pcall(function()
     return json.decode("esto no es un json válido")
 end)
 
-if nor status then
+if not status then
     print("Hubo un error al cargar JSON:", resultado)
 else
     print("JSON cargado correctamente")
