@@ -11,41 +11,6 @@ local ListaDeTarea = { --Guardaremos todas las listas
         estado = "pendiente"
     }
 }
---Codigo necesario para que pueda ser interactivo con json-------------------
-
-cargarDesdeJSON("tareas.json")
-while true do
-    print("\n--- MENÚ ---")
-    print("1. Agregar tarea")
-    print("2. Completar tarea")
-    print("3. Mostrar tareas")
-    print("4. Guardar en JSON")
-    print("5. Salir")
-
-    io.write("Selecciona una opción: ")
-    local opcion = io.read()
-
-    if opcion == "1" then
-        io.write("Título: ")
-        local titulo = io.read()
-        io.write("Descripción: ")
-        local descripcion = io.read()
-        agregarTarea(titulo, descripcion)
-    elseif opcion == "2" then
-        io.write("Título de tarea a completar: ")
-        local titulo = io.read()
-        CompletarTareas(titulo)
-    elseif opcion == "3" then
-        imprimirTareas()
-    elseif opcion == "4" then
-        guardarEnJSON("tareas.json")
-    elseif opcion == "5" then
-        print("Saliendo...")
-        break
-    else
-        print("Opción no válida")
-    end
-end
 
 
 
@@ -165,5 +130,40 @@ function DeshacerTareaCompletada(titulo)
     end
     if not tarea_deshecha then
         print("Esta tarea no estaba completada")
+    end
+end
+--Codigo necesario para que pueda ser interactivo con json-------------------
+
+cargarDesdeJSON("tareas.json")
+while true do
+    print("\n--- MENÚ ---")
+    print("1. Agregar tarea")
+    print("2. Completar tarea")
+    print("3. Mostrar tareas")
+    print("4. Guardar en JSON")
+    print("5. Salir")
+
+    io.write("Selecciona una opción: ")
+    local opcion = io.read()
+
+    if opcion == "1" then
+        io.write("Título: ")
+        local titulo = io.read()
+        io.write("Descripción: ")
+        local descripcion = io.read()
+        agregarTarea(titulo, descripcion)
+    elseif opcion == "2" then
+        io.write("Título de tarea a completar: ")
+        local titulo = io.read()
+        CompletarTareas(titulo)
+    elseif opcion == "3" then
+        imprimirTareas()
+    elseif opcion == "4" then
+        guardarEnJSON("tareas.json")
+    elseif opcion == "5" then
+        print("Saliendo...")
+        break
+    else
+        print("Opción no válida")
     end
 end
