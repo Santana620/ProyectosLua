@@ -1,4 +1,5 @@
 -- Vamos a tener muchas tareas
+local json = require("json")
 local ListaDeTarea = { --Guardaremos todas las listas
 
      {   titulo = "pasear al perro",
@@ -73,7 +74,6 @@ function eliminarTarea(titulo)
     end
 end
     print("Titulo encontrado")
-    end
 
 function imprimirTareaPorTitulo(titulo)
     for i, tarea in ipairs(ListaDeTarea) do
@@ -97,7 +97,7 @@ function CompletarTareas(titulo)
     local tarea_encontrada = false 
     for i, tarea in ipairs(ListaDeTarea) do
         if tarea.titulo == titulo and tarea.estado ~= "Completado"  then
-        tarea_estado = "Completado" 
+        tarea.estado = "Completado" 
         table.insert(ListaDeTareasCompletadas, {
                 titulo = tarea.titulo,
                 descripcion = tarea.descripcion,
@@ -163,10 +163,11 @@ while true do
         guardarEnJSON("tareas.json")
     elseif opcion == "5" then
         print("Saliendo...")
+        guardarEnJSON("tareas.json")
+        break
     elseif opcion == "6" then
         MostarTareasCompletadas()
         guardarEnJSON("tareas.json")
-        break
     else
         print("Opción no válida")
     end
