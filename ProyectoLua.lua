@@ -131,20 +131,20 @@ local ListaDeTareasCompletadas = {}
 function CompletarTareas(titulo)
     local tarea_encontrada = false 
     for i, tarea in ipairs(ListaDeTarea) do
-        if tarea.titulo == titulo then
-        local tarea_completada = { 
-        titulo = tarea.titulo,
-        descripcion = tarea.descripcion,
-        estado = "Completado",
-        }
-        table.insert(ListaDeTareasCompletadas, tarea_completada)
-        print("Hay una tarea completada, revisala")
+        if tarea.titulo == titulo and tarea.estado ~= "Completado"  then
+        local tarea_estado = "Completado" 
+        table.insert(ListaDeTareasCompletadas, {
+                titulo = tarea.titulo,
+                descripcion = tarea.descripcion,
+                estado = "Completado"
+            })
+        print("Tarea completada: " .. titulo)
         tarea_encontrada = true 
         break
     end
 end
         if not tarea_encontrada then
-            print("Esta tarea no existe")
+            print("La tarea no existe o ya está completada")
             end
         end
 
