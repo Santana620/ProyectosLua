@@ -1,0 +1,12 @@
+[
+  {
+    "titulo": "Estudiar programación",
+    "descripcion": "Repasar Lua",
+    "estado": "pendiente"
+  },
+  {
+    "titulo": "Pasear al perro",
+    "descripcion": "Sacar al perro por la tarde",
+    "estado": "pendiente"
+  }
+]
