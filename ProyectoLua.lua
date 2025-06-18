@@ -167,3 +167,13 @@ while true do
         print("Opción no válida")
     end
 end
+
+local status, resultado = pcall(function()
+    return json.decode("esto no es un json válido")
+end)
+
+if nor status then
+    print("Hubo un error al cargar JSON:", resultado)
+else
+    print("JSON cargado correctamente")
+end
