@@ -153,33 +153,31 @@ while true do
     local opcion = io.read()
 
     if opcion == "1" then
-        io.write("Título: ")
-        local titulo = io.read()
-        io.write("Descripción: ")
-        local descripcion = io.read()
-        agregarTarea(titulo, descripcion)
-    elseif opcion == "2" then
-        io.write("Título de tarea a completar: ")
-        local titulo = io.read()
-        CompletarTareas(titulo)
-    elseif opcion == "3" then
-        imprimirTareas()
-    elseif opcion == "4" then
-        guardarEnJSON("tareas.json")
-    elseif opcion == "5" then
-        print("Saliendo...")
-        guardarEnJSON("tareas.json")
-        break
-    elseif opcion == "6" then
-        MostrarTareasCompletadas()
-        guardarEnJSON("tareas.json")
-    else
-        print("Opción no válida")
-    elseif opcion == "7" then
+    io.write("Título: ")
+    local titulo = io.read()
+    io.write("Descripción: ")
+    local descripcion = io.read()
+    agregarTarea(titulo, descripcion)
+elseif opcion == "2" then
+    io.write("Título de tarea a completar: ")
+    local titulo = io.read()
+    CompletarTareas(titulo)
+elseif opcion == "3" then
+    imprimirTareas()
+elseif opcion == "4" then
+    guardarEnJSON("tareas.json")
+elseif opcion == "5" then
+    print("Saliendo...")
+    guardarEnJSON("tareas.json")
+    break
+elseif opcion == "6" then
+    MostrarTareasCompletadas()
+elseif opcion == "7" then
     io.write("Título de la tarea a deshacer: ")
     local titulo = io.read()
     DeshacerTareaCompletada(titulo)
-    end
+else
+    print("Opción no válida")
 end
 
 local status, resultado = pcall(function()
