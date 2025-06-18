@@ -20,7 +20,10 @@ local ListaDeTarea = { --Guardaremos todas las listas
 function guardarEnJSON(nombre_archivo)
     local archivo = io.open(nombre_archivo, "w")
     if archivo then
-        local contenido = json.encode(ListaDeTarea, { indent = true })
+        local contenido = json.encode({
+            pendientes = ListaDeTarea,
+            completadas = ListaDeTareasCompletadas
+        }, { indent = true })
         archivo:write(contenido)
         archivo:close()
         print("Tareas guardadas en " .. nombre_archivo)
@@ -36,8 +39,9 @@ function cargarDesdeJSON(nombre_archivo)
         archivo:close()
         local datos, pos, err = json.decode(contenido)
         if datos then
-            ListaDeTarea = datos
-            print("Tareas cargadas " .. nombre_archivo)
+            ListaDeTarea = datos.pendientes or {}
+            ListaDeTareasCompletadas = datos.completadas or {}
+            print("Tareas cargadas desde " .. nombre_archivo)
         else
             print("Error al decodificar JSON: ", err)
         end
@@ -72,8 +76,8 @@ function eliminarTarea(titulo)
         print("Tarea eliminada: " .. titulo)
         return
     end
-end
     print("Titulo encontrado")
+end
 
 function imprimirTareaPorTitulo(titulo)
     for i, tarea in ipairs(ListaDeTarea) do
