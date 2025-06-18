@@ -13,7 +13,7 @@ local ListaDeTarea = { --Guardaremos todas las listas
 }
 --Codigo necesario para que pueda ser interactivo con json-------------------
 
-
+cargarDesdeJSON("tareas.json")
 while true do
     print("\n--- MENÚ ---")
     print("1. Agregar tarea")
@@ -63,7 +63,22 @@ function guardarEnJSON(nombre_archivo)
     end
 end
 -----------------------------------------------------------------------------
-
+function cargarDesdeJSON(nombre_archivo)
+    local archivo = io.open(nombre_archivo, "r")
+    if archivo then
+        local contenido = archivo:read("*a")
+        archivo.close()
+        local datos, pos, err = json.decode(contenido)
+        if datos then
+            ListaDeTarea = datos
+            print("Tareas cargadas " .. nombre_archivo)
+        else
+            print("Error al decodificar JSON: ", err)
+        end
+    else
+        print("No se encontró el archivo " .. nombre_archivo)
+    end
+end
 
 
 function agregarTarea(titulo, descripcion)
