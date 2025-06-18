@@ -71,13 +71,14 @@ function agregarTarea(titulo, descripcion)
 end
 
 function eliminarTarea(titulo)
- for i, tarea in ipairs(ListaDeTarea) do
-    if tarea.titulo == titulo then
-        table.remove(ListaDeTarea, i)
-        print("Tarea eliminada: " .. titulo)
-        return
+    for i, tarea in ipairs(ListaDeTarea) do
+        if tarea.titulo == titulo then
+            table.remove(ListaDeTarea, i)
+            print("Tarea eliminada: " .. titulo)
+            return
+        end
     end
-    print("Titulo encontrado")
+    print("Tarea no encontrada.")
 end
 
 function imprimirTareaPorTitulo(titulo)
